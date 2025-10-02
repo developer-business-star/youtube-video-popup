@@ -39,6 +39,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
   onMoreOptions,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isPopupHovered, setIsPopupHovered] = useState(false);
 
   const handleMouseEnter = (event: any) => {
     setIsHovered(true);
@@ -46,6 +47,14 @@ const VideoCard: React.FC<VideoCardProps> = ({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handlePopupMouseEnter = () => {
+    setIsPopupHovered(true);
+  };
+
+  const handlePopupMouseLeave = () => {
+    setIsPopupHovered(false);
   };
 
   return (
@@ -110,8 +119,13 @@ const VideoCard: React.FC<VideoCardProps> = ({
       </TouchableOpacity>
 
       {/* Hover Popup - Positioned above the card */}
-      {isHovered && (
-        <View style={styles.popupContainer}>
+      {(isHovered || isPopupHovered) && (
+        <View 
+          style={styles.popupContainer}
+          // @ts-ignore
+          onMouseEnter={handlePopupMouseEnter}
+          onMouseLeave={handlePopupMouseLeave}
+        >
           <VideoHoverPopup
             thumbnail={thumbnail}
             title={title}
@@ -120,7 +134,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
             views={views}
             uploadTime={uploadTime}
             isLive={isLive}
-            isVisible={isHovered}
+            isVisible={isHovered || isPopupHovered}
             position={{ x: 0, y: 0 }}
             onWatchLater={onWatchLater}
             onAddToQueue={onAddToQueue}
@@ -143,6 +157,7 @@ const styles = StyleSheet.create({
     left: '50%',
     transform: [{ translateX: -160 }], // Center the popup (popup width is 320px)
     zIndex: 1000,
+    pointerEvents: 'auto',
   },
   container: {
     marginBottom: 16,
