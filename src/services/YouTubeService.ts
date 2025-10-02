@@ -1,4 +1,4 @@
-// import { YOUTUBE_API_KEY } from '../config/environment';
+import { YOUTUBE_API_KEY } from '../config/environment';
 
 export interface YouTubeVideo {
   id: string;
@@ -60,7 +60,7 @@ const formatUploadTime = (publishedAt: string): string => {
 const fetchYouTubeData = async (endpoint: string, params: Record<string, string>): Promise<any> => {
 
   const query = new URLSearchParams({
-    key: 'AIzaSyA7pulF5dQ1imPJDWnxhuXhHZyMmJrCAJQ',
+    key: YOUTUBE_API_KEY,
     ...params,
   }).toString();
 
