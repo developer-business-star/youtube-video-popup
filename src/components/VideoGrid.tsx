@@ -71,15 +71,16 @@ const VideoGrid: React.FC<VideoGridProps> = ({
   }, [hasMore, loadingMore, onLoadMore]);
 
   return (
-    <ScrollView 
-      ref={scrollViewRef}
-      style={styles.container} 
-      showsVerticalScrollIndicator={false}
-      onScroll={handleScroll}
-      scrollEventThrottle={400}
-      // @ts-ignore
-      data-scroll-container="true"
-    >
+         <ScrollView 
+           ref={scrollViewRef}
+           style={styles.container} 
+           showsVerticalScrollIndicator={false}
+           showsHorizontalScrollIndicator={false}
+           onScroll={handleScroll}
+           scrollEventThrottle={400}
+           // @ts-ignore
+           data-scroll-container="true"
+         >
       <View style={styles.grid}>
         {videos.map((video, index) => (
           <VideoCard
@@ -122,6 +123,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    // @ts-ignore - Web-specific styles
+    scrollbarWidth: 'none', // Firefox
+    msOverflowStyle: 'none', // IE/Edge
+    '&::-webkit-scrollbar': {
+      display: 'none', // Chrome/Safari
+    },
   },
   grid: {
     flexDirection: 'row',
