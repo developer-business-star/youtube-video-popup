@@ -149,13 +149,14 @@ const VideoCard: React.FC<VideoCardProps> = ({
 const styles = StyleSheet.create({
   cardContainer: {
     position: 'relative',
-    width: '30%',
+    width: '24%',
   },
   popupContainer: {
     position: 'absolute',
-    top: -200, // Position above the card
-    left: '50%',
-    transform: [{ translateX: -160 }], // Center the popup (popup width is 320px)
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
     zIndex: 1000,
     pointerEvents: 'auto',
   },
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     width: '100%',
-    height: 100,
+    height: 210,
     borderRadius: 8,
     backgroundColor: '#F0F0F0',
   },

@@ -54,6 +54,7 @@ MyReactNativeApp/
 - React Native CLI
 - Android Studio (for Android development)
 - Xcode (for iOS development, macOS only)
+- YouTube API Key (for real video data)
 
 ### Installation
 
@@ -67,7 +68,25 @@ npm install
 cd ios && pod install && cd ..
 ```
 
+### YouTube API Setup
+
+1. Go to [Google Cloud Console](https://console.developers.google.com/)
+2. Create a new project or select existing one
+3. Enable the YouTube Data API v3
+4. Create credentials (API Key)
+5. Copy your API key
+
+6. Create `.env.local` file in root directory:
+```bash
+REACT_APP_YOUTUBE_API_KEY=your_youtube_api_key_here
+```
+
 ### Running the App
+
+#### Web (with YouTube API)
+```bash
+npm run web
+```
 
 #### Android
 ```bash

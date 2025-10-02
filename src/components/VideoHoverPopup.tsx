@@ -84,7 +84,11 @@ const VideoHoverPopup: React.FC<VideoHoverPopupProps> = ({
     >
       {/* Video Thumbnail */}
       <View style={styles.popupThumbnail}>
-        <Image source={{ uri: thumbnail }} style={styles.popupThumbnailImage as any} />
+        <Image 
+          source={{ uri: thumbnail }} 
+          style={styles.popupThumbnailImage as any}
+          resizeMode="cover"
+        />
         {isLive && (
           <View style={styles.popupLiveBadge}>
             <View style={styles.popupLiveDot} />
@@ -97,7 +101,7 @@ const VideoHoverPopup: React.FC<VideoHoverPopupProps> = ({
       <View style={styles.popupContent}>
         {/* Title Row */}
         <View style={styles.titleRow}>
-          <Text style={styles.popupTitle} numberOfLines={2}>
+          <Text style={styles.popupTitle} numberOfLines={1}>
             {title}
           </Text>
           <TouchableOpacity style={styles.moreOptionsButton} onPress={onMoreOptions}>
@@ -152,29 +156,33 @@ const VideoHoverPopup: React.FC<VideoHoverPopupProps> = ({
 
 const styles = StyleSheet.create({
   popup: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    borderRadius: 12,
-    padding: 12,
-    width: 320,
+    backgroundColor: 'rgba(255, 255, 255, 0.98)',
+    borderRadius: 6,
+    padding: 16,
+    width: '100%',
+    height: '100%',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 8,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
+    elevation: 12,
     pointerEvents: 'auto',
+    justifyContent: 'space-between',
   },
   popupThumbnail: {
     position: 'relative',
-    marginBottom: 12,
+    marginBottom: 16,
+    flex: 1,
   },
   popupThumbnailImage: {
     width: '100%',
-    height: 120,
+    height: '100%',
     borderRadius: 8,
     backgroundColor: '#F0F0F0',
+    resizeMode: 'cover',
   },
   popupLiveBadge: {
     position: 'absolute',
@@ -200,7 +208,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   popupContent: {
-    paddingHorizontal: 4,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 8,
   },
   titleRow: {
     flexDirection: 'row',
@@ -209,10 +220,10 @@ const styles = StyleSheet.create({
   },
   popupTitle: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
     color: '#0F0F0F',
-    lineHeight: 22,
+    lineHeight: 24,
     marginRight: 8,
   },
   moreOptionsButton: {
@@ -250,7 +261,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   popupDefaultChannelText: {
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: 'bold',
     color: '#666666',
   },
@@ -269,7 +280,7 @@ const styles = StyleSheet.create({
   },
   verifiedText: {
     color: '#FFFFFF',
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: 'bold',
   },
   popupViews: {
@@ -287,23 +298,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F8F9FA',
     borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    marginHorizontal: 2,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    marginHorizontal: 4,
   },
   actionButtonIcon: {
     marginRight: 6,
   },
   clockIcon: {
-    fontSize: 14,
+    fontSize: 15,
   },
   queueIcon: {
-    fontSize: 14,
+    fontSize: 15,
   },
   actionButtonText: {
-    fontSize: 12,
+    fontSize: 11,
     color: '#0F0F0F',
-    fontWeight: '500',
+    fontWeight: '400',
   },
 });
 
